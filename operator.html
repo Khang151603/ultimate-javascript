@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <h1>Operator</h1>
+    <script type="text/javascript">
+      /* ==
+        - nếu 2 vế mà khác kiểu -> javascript auto coericion 1 trong 2 thành cùng kiểu
+        
+        ===: strictly
+        - so sánh vừa giá trị, vừa kiểu dữ liệu
+      */
+
+      //!= : call api -> a = 10
+      const inputSearch = 'dang';
+      if (inputSearch !== 'tony') {
+        console.log('true')
+      } else {
+        console.log('false')
+      }
+
+      /* ++
+      const numberA = '1';
+      Number(numberA)++
+      numberA = numberA + 1
+      numberA++
+      */
+
+      /* &&
+        - if side left is true, return value side right.
+        - if side left is false, return value side left.
+        'tony' && ' ' ->  ' '
+        true && 'tony' -> 'tony'
+        '' && 'tony' -> ''
+        'tony' && 'dang' && 'khang' -> 'dang' && 'khang' -> 'khang'
+        'tony' && '' && 'khang' -> '' && 'khang' -> ''
+
+        || -> lấy kết quả true đầu tiên 
+        'tony' || 'khang' -> 'tony'
+        '' || 'tony' || 'khang' -> 'tony'
+
+        !: 
+          - return true for false statements and false for true statements.
+          - convert any value (string, number ...) to true/false
+          !true -> false
+          !false -> true
+          !'tony' -> false
+          !!'tony' -> !false -> true
+          !!!'' -> !!true -> !false -> true
+
+          0 || 100 -> 100
+          0 ?? 100 -> 0
+      */
+
+      /* == 
+        - If the operands are both objects, return true only if both operands reference the same object.
+        - If one operand is null and the other is undefined, return true.
+        - If the operands are of different types, try to convert them to the same type before comparing:
+          - When comparing a number to a string, try to convert the string to a numeric value.
+          - If one of the operands is Boolean, convert the Boolean operand to 1 if it is true and +0 if it is false.
+             1 == true -> 1 == Boolean(true) -> 1 == 1
+          - If one of the operands is an object and the other is a number or a string, try to convert the object to a primitive using the object's valueOf() and toString() methods.
+            const a = new String('a'); // object
+            const b = 'tony'
+            a == b -> a.toString() == b -> 'a' == 'tony' -> false
+        - If the operands have the same type, they are compared as follows:
+          - String: return true only if both operands have the same characters in the same order.
+            const a = 'tony'
+            const b = 'tony'
+            => true
+          - Number: return true only if both operands have the same value. +0 and -0 are treated as the same value. If either operand is NaN, return false.
+            const a = 2;
+            cons b = 2;
+            => true
+          - Boolean: return true only if operands are both true or both false.
+            const a = false;
+            const b = true;
+            => false
+      */
+
+      /* 'pack' == true -> false/true
+         'pack' == true -> 'pack' = 1 -> NaN = 1 -> false
+      */
+
+      // ternary: ? :
+      // input -> output
+      function getAchive(number) {
+        // if (number < 1) {
+        //   return 'D'
+        // } else if (number > 1 && number < 5) {
+        //   return 'C'
+        // } else if (number > 6 && number <= 7) {
+        //   return 'B'
+        // }
+
+        // return early - clean code
+        // if (number < 1) return 'D' 
+        // if (number > 1 && number < 5) return 'C' 
+        // if (number > 6 && number <= 7) return 'B'
+        // return 'A'
+        let text = 'A';
+        text = number < 1 ? 'D'
+                : number > 1 && number < 5 ? 'C'
+                : number > 6 && number <= 7 ? 'B'
+                : text;
+
+        return text;
+      }
+
+      // object true/false
+      const persons = {};
+      // convert object to array: Object.values(), Object.keys(), Object.entries()
+      if (Object.keys(persons).length > 0) {
+        console.log('object has value')
+      }
+
+
+      
+     
+      
+    </script>
+  </body>
+</html>

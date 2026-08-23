@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    Demo hoisting javascript
+    <script type="text/javascript">
+      // Hoisting 1 with IIFE
+      var salary = '1000$';
+
+      (function () {
+        console.log('Original salary was ' + salary);
+        var salary = '6000$';
+        console.log('My New Salary ' + salary);
+      })();
+      // equivalent
+      // function sum() {
+      //   console.log('Original salary was ' + salary);
+      //   var salary = '6000$';
+      //   console.log('My New Salary ' + salary);
+      // }
+      // sum();
+
+
+      // Hoisting 2 and Scope Chain with IIFE
+      var salary = '1000$';
+
+      (function () {
+        console.log('Original salary was ' + salary);
+        console.log('My New Salary ' + salary);
+      })();
+
+      // Hoisting 3
+      var x = 10;
+
+      test();
+
+      function test() {
+        function logX() {
+          console.log(x);
+        }
+        var x = 20;
+        logX();
+      }
+
+      console.log(x);
+    </script>
+  </body>
+</html>
+
+// 16 - 1000$
+// 18 - 6000$
+// 44 - xx

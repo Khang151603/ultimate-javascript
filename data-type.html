@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <h1>Data Type</h1>
+    <script type="text/javascript">
+      /* what, how, when
+        Primitive values - so sánh giá trị với nhau
+          Numbers - Integers, floats
+          Strings - Any data under single quote, double quote or backtick quote
+          Boolean - true or false value
+          Null - empty value or no value
+          Undefined - a declared variable without a value
+          Symbol (ES2015)
+        Non-primitive values (Object reference) - so sánh tham chiếu
+          Objects
+          Function
+          Array
+      */
+      
+      // string
+      const first_name = 'tony';
+      const last_name = 'nguyen';
+      const fullname = first_name + ' ' + last_name; // tony nguyen
+      const backtickFullname = `${first_name} ${last_name}`;  // tony nguyen
+
+      // so sánh giá trị
+      const numberA = 1;
+      const numberB = 1;
+      console.log('equal value: ', numberA === numberB); // true
+
+      // Apple, apple 
+      // search: a -> apple, Apple
+
+      /* object
+       - so sánh tham chiếu - so sánh các vùng nhớ
+      */
+     const objectA = {}; // memory A
+     const objectB = {}; // memory B
+     const objectC = objectA; // memory C
+     objectA.title = 'tony';
+
+     console.log('equal object: ', objectA === objectC); // true
+     console.log('object: ', {
+      objectA, // title
+      objectB, // none
+      objectC // title
+     })
+
+     // typeof operator
+     const numberX = 1;
+     const numberY = '1';
+     console.log('typeof operator: ', numberX === Number(numberY)); //true
+
+     console.log('coercion operator: ', 30 + Number('12')); // 42
+
+     /* number convert
+      - undefiend -> Number(undefiend) -> NaN (not a Number)
+      - null -> Number(null) -> 0
+      - false -> Number(false) -> 0
+      - true -> Number(true) -> 1
+     */
+
+      
+    </script>
+  </body>
+</html>
