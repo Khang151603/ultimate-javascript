@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    Function
+    <script type="text/javascript">
+      // fallback/default vaue
+      /* 
+      {
+        "key": "name"
+      }
+
+      */
+      // function getPerson(firstName = 'John', lastName, age, node, width, height, city) {
+      //   console.log('getPerson: ', {
+      //     firstName,
+      //     lastName,
+      //     age
+      //   })
+      // };
+
+      // getPerson('dang', 'nguyen', 18);
+
+      function getPerson({ firstName = 'John', lastName, age, node, width, height, city } = {}) {
+        console.log('getPerson: ', {
+          firstName,
+          lastName,
+          age,
+          city
+        })
+      };
+
+      getPerson();
+
+      
+
+      /* prefix, suffix
+        function -> return boolean true/false
+          naming: is, has, show, enable, disable
+            - isAdmin
+            - hasPermision
+            - showPopup
+            - enablePopularBanner
+            - disableDelete
+      */
+
+      /* try catch finally */
+      const abc = '123';
+      try {
+        abc = '456'
+      } catch (err) {
+        console.log('try catch: ', err)
+      }
+      
+      let loading = false;
+      function calcuaLegacy(size) {
+        loading = true
+        try {
+          const _dang = size.rectangle;
+          // loading = false;
+          return size.width * size.height * size.abc;
+        } catch (err) {
+          console.log('please pass size is object')
+          // loading = false;
+          // show message error on UI
+          return 404
+        } finally {
+          loading = false;
+        }
+      }
+
+      const resultCalcuaLegacy = calcuaLegacy({});
+      console.log('resultCalcuaLegacy: ', resultCalcuaLegacy)
+
+    </script>
+  </body>
+</html>
