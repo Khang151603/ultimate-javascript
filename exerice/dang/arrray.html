@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    Array
+    <script type="text/javascript">
+      /* spice - start, deleteCount, item1, item2 ... itemN
+        members.splice(2) -> remove item at index 2
+        members.splice(1, 0) -> nothing
+        members.splice(1, 2) -> remove 2 item at index 1
+        members.splice(2, 2, 'tony', 'khang') -> remove 2 item at index 2, and then insert tony, khang start at index2
+      */
+
+      // add a item into from index 1
+      // output: ['truong', 'quoc', 'sang', 'linh'];
+      members.splice(1, 0, 'quoc');
+
+      // output: ['quoc', 'truong', 'quoc', 'sang', 'linh'];
+      
+      // output: ['quoc', 'truong', 'quoc', 'khoa', 'sang', 'linh'];
+
+      // replace item
+      // output: ['quoc', 'truong', 'niem', 'khoa', 'sang', 'linh'];
+
+      // output: ['quoc', 'ngoc', 'khoa', 'sang', 'linh'];
+
+      // output: ['quoc', 'kien', 'thy', 'sang', 'linh'];
+
+      // remove item
+      // output: ['quoc', 'sang', 'linh'];
+
+      // output: ['quoc', 'sang'];
+
+      // output: ['quoc'];
+
+
+      /* splice object
+        - remove cac book price > 100
+        - add new book at index 2
+      */
+      const books = [
+        {
+          id: 1,
+          price: 80,
+          title: "javascript"
+        },
+        {
+          id: 2,
+          price: 102,
+          title: "react"
+        },
+        {
+          id: 3,
+          price: 40,
+          title: "angular"
+        }
+      ]
+      const newBook = {
+        id: 4,
+        price: 50,
+        title: "vue"
+      }
+
+    
+      /* bai tap filter
+        - apple -> apple
+        - ap -> apple, grapes
+      */
+     const fruits = [
+      {
+        id: 1,
+        title: 'apple'
+      },
+      {
+        id: 2,
+        title: 'banana'
+      },
+      {
+        id: 3,
+        title: 'mango'
+      },
+      {
+        id: 4,
+        title: 'orange'
+      },
+      {
+        id: 5,
+        title: 'grapes'
+      }
+     ];
+
+    </script>
+  </body>
+</html>
