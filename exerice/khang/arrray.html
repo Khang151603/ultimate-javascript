@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,27 +17,42 @@
       */
 
       // add a item into from index 1
+      const members = ["truong", "sang", "linh"];
       // output: ['truong', 'quoc', 'sang', 'linh'];
-      members.splice(1, 0, 'quoc');
-
+      members.splice(1, 0, "quoc");
+      console.log(members);
       // output: ['quoc', 'truong', 'quoc', 'sang', 'linh'];
-      
+      members.splice(0, 0, "quoc");
+      console.log(members);
       // output: ['quoc', 'truong', 'quoc', 'khoa', 'sang', 'linh'];
+      members.splice(3, 0, "khoa");
+      console.log(members);
 
       // replace item
       // output: ['quoc', 'truong', 'niem', 'khoa', 'sang', 'linh'];
+      members.splice(2, 1, "niem");
+      console.log(members);
 
       // output: ['quoc', 'ngoc', 'khoa', 'sang', 'linh'];
+      members.splice(1, 2, "ngoc");
+      console.log(members);
 
       // output: ['quoc', 'kien', 'thy', 'sang', 'linh'];
+      members.splice(1, 2, "kien", "thy");
+      console.log(members);
 
       // remove item
       // output: ['quoc', 'sang', 'linh'];
+      members.splice(1, 2);
+      console.log(members);
 
       // output: ['quoc', 'sang'];
+      members.splice(2, 1);
+      console.log(members);
 
       // output: ['quoc'];
-
+      members.splice(1);
+      console.log(members);
 
       /* splice object
         - remove cac book price > 100
@@ -47,53 +62,72 @@
         {
           id: 1,
           price: 80,
-          title: "javascript"
+          title: "javascript",
         },
         {
           id: 2,
           price: 102,
-          title: "react"
+          title: "react",
         },
         {
           id: 3,
           price: 40,
-          title: "angular"
-        }
-      ]
+          title: "angular",
+        },
+      ];
+      
       const newBook = {
         id: 4,
         price: 50,
-        title: "vue"
-      }
+        title: "vue",
+      };
 
-    
+      const bookIndex = books.findIndex((book) => {
+        return book.price > 100;
+      });
+
+      books.splice(bookIndex, 1);
+
+      books.splice(2, 0, newBook);
+
+      console.log(books);
+
       /* bai tap filter
         - apple -> apple
         - ap -> apple, grapes
       */
-     const fruits = [
-      {
-        id: 1,
-        title: 'apple'
-      },
-      {
-        id: 2,
-        title: 'banana'
-      },
-      {
-        id: 3,
-        title: 'mango'
-      },
-      {
-        id: 4,
-        title: 'orange'
-      },
-      {
-        id: 5,
-        title: 'grapes'
-      }
-     ];
+      const fruits = [
+        {
+          id: 1,
+          title: "apple",
+        },
+        {
+          id: 2,
+          title: "banana",
+        },
+        {
+          id: 3,
+          title: "mango",
+        },
+        {
+          id: 4,
+          title: "orange",
+        },
+        {
+          id: 5,
+          title: "grapes",
+        },
+      ];
 
+      const appleFruits = fruits.filter((fruit) => {
+        return fruit.title === "apple";
+      });
+      console.log(appleFruits);
+
+      const fruitsWithAp = fruits.filter((fruit) => {
+        return fruit.title.includes("ap");
+      });
+      console.log(fruitsWithAp);
     </script>
   </body>
 </html>
