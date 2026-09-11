@@ -18,7 +18,7 @@ $ git commit -m "xxx"
 $ git remote add origin https://github.com/nhattruongniit/test-git.git
 $ git push -u origin main
 
-# create new branch
+# create new branch. Notes: always pull lasted code before create new branch
 $ git checkout -b {name_branch}
 
 # switch branch
