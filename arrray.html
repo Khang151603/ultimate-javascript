@@ -166,6 +166,60 @@
     })
     console.log('map: ', aninalsMapping)
 
+    /* sort
+      - return 1 -> a after b
+      - return -1 -> a before b
+      - return 0 -> keep position
+    */
+    const cloneFruits = JSON.parse(JSON.stringify(fruits)); // deep clone
+    
+    // ascending
+    // cloneFruits.sort((a, b) => {
+    //   if (a.title > b.title) return 1;
+    //   if (a.title < b.title) return -1;
+    //   return 0;
+    // })
+
+    // descending
+    cloneFruits.sort((a, b) => {
+      if (a.title.toLowerCase() > b.title.toLowerCase()) return -1;
+      if (a.title.toLowerCase() < b.title.toLowerCase()) return 1;
+      return 0;
+    })
+    console.log('ascending sort: ', cloneFruits)
+
+    // reduce
+    const orders = [
+      { name: 'A', quanlity: 2, price: 100 },
+      { name: 'B', quanlity: 5, price: 500 },
+      { name: 'C', quanlity: 4, price: 200 }
+    ];
+    const totalOrders = orders.reduce((acc, currValue) => {
+      return acc += currValue.quanlity * currValue.price
+    }, 0);
+    /*
+      1 call: 0 += 2 * 100 => 200
+      2 call: 200 += 5 * 500 => 2700
+      3 call: 2700 += 4 * 200 => 3500
+    */
+    console.log('reducer totalOrders: ', totalOrders);
+    
+    /* output
+      [
+        { name: 'A', total: 200 },
+        { name: 'B', total: 2500 }
+        { name: 'C', total: 800 }
+      ]
+    */
+   const transformOrders = orders.reduce((acc, curr) => {
+    const newItem = {
+      name: curr.name,
+      total: curr.price * curr.quanlity
+    }
+    acc.push(newItem)
+    return acc
+   }, [])
+   console.log('reducer transformOrders: ', transformOrders);
 
     </script>
   </body>

@@ -120,6 +120,166 @@
         return fruit.title.includes("ap");
       });
       console.log(fruitsWithAp);
+
+      /* count item
+        {
+          banana: 2,
+          cherry: 2,
+          orange: 2,
+          apple: 1,
+          fig: 1
+        }
+      */
+      const fruitBasket = ['banana', 'cherry', 'orange', 'apple', 'cherry', 'orange',  'banana', 'fig'];
+
+      /* flatten color complicated
+        [ 'blue', 'green', 'red', 'orange' ]
+      */
+      const colorArray = [
+        { a: 'Happy', b: 'Robin', c: ['blue', 'green'] },
+        { a: 'Tired', b: 'panther', c: ['blue', 'green', 'red', 'orange'] },
+        { a: 'Sad', b: 'Fish', c: ['green', 'red'] },
+      ]
+
+      /* groupBy
+        {
+          '2': [
+            { id: 2, name: 'English', duration: 2 },
+          ],
+          '3': [
+            { id: 1, name: 'English', duration: 3 },
+          ],
+          '4': [
+            { id: 3, name: 'French', duration: 4 },
+            { id: 5, name: 'French', duration: 4 },
+          ]
+        }
+      */
+      const languages = [
+        {
+          id: 1,
+          name: "English",
+          duration: 3,
+        },
+        {
+          id: 2,
+          name: "English",
+          duration: 2,
+        },
+        {
+          id: 3,
+          name: "French",
+          duration: 4,
+        },
+        {
+          id: 5,
+          name: "French",
+          duration: 4,
+        },
+      ];
+
+      /* output
+        {
+          Billing: [
+            {
+              "email":      "email@example.com",
+              "first_name": "Tony",
+              "last_name":  "Nguyen",
+              "group":   "Billing", 
+            },
+            ...
+          ],
+          Collaboration: [
+            { ... }
+          ],
+          Simulation: [
+            { ... }
+          ],
+        }
+      */
+      const dataNotification = [
+        {
+          "email":      "email@example.com",
+          "first_name": "Tony",
+          "last_name":  "Nguyen",
+          "group":   "Billing", 
+        },
+        {
+          "email":      "email@example.com",
+          "first_name": "John",
+          "last_name":  "Doe",
+          "group":   "Collaboration",
+        },
+        {
+          "email":      "email@example.com",
+          "first_name": "Thang",
+          "last_name":  "Doe",
+          "group":   "Simulation"
+        },
+        {
+          "email":      "email@example.com",
+          "first_name": "Stefan",
+          "last_name":  "Doe",
+          "group":   "Billing",
+        },
+        {
+          "email":      "email@example.com",
+          "first_name": "John",
+          "last_name":  "Doe",
+          "group":   "Billing",
+        },
+      ];
+
+      /* output remove duplicated
+        [
+          { campaignId: 'google-32231', campaignName: 'ad group 2' },
+          {
+            campaignId: 'google-195b4eee-b0ee-4475-a70e-6bb8dbafd748',
+            campaignName: 'ad group 1'
+          }
+        ]
+      */
+      const sessionCampaigns = [
+        {
+          campaignId: "google-195b4eee-b0ee-4475-a70e-6bb8dbafd748",
+          campaignName: "ad group 1",
+        },
+      ];
+
+      const dataSet = [
+        {
+          campaignId: "google-32231",
+          campaignName: "ad group 2",
+        },
+        {
+          campaignId: "google-195b4eee-b0ee-4475-a70e-6bb8dbafd748",
+          campaignName: "ad group 1",
+        },
+      ];
+
+      /* grade
+        Tìm thứ hạng trung bình của cả lớp 
+        Tìm thứ hạng trung bình của nam trong lớp 
+        Tìm thứ hạng trung bình của Nữ trong lớp 
+        Tìm thứ hạng cao nhất của Nam trong lớp 
+        Tìm thứ hạng cao nhất của Nữ trong lớp
+        Tìm thứ hạng thấp nhất của Nam trong lớp 
+        Tìm thứ hạng thấp nhất của Nữ trong lớp 
+        Tìm thứ hạng cao nhất của cả lớp 
+        Tìm thứ hạng thấp nhất của cả lớp
+      */
+      const grades = [
+        {name: 'John', grade: 8, sex: 'M'},
+        {name: 'Sarah', grade: 12, sex: 'F'},
+        {name: 'Bob', grade: 16, sex: 'M'},
+        {name: 'Johnny', grade: 2, sex: 'M'},
+        {name: 'Ethan', grade: 4, sex: 'M'},
+        {name: 'Paula', grade: 18, sex: 'F'},
+        {name: 'Donald', grade: 5, sex: 'M'},
+        {name: 'Jennifer', grade: 13, sex: 'F'},
+        {name: 'Courtney', grade: 15, sex: 'F'},
+        {name: 'Jane', grade: 9, sex: 'F'}
+      ];
     </script>
   </body>
 </html>
