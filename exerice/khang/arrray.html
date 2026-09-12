@@ -20,39 +20,30 @@
       const members = ["truong", "sang", "linh"];
       // output: ['truong', 'quoc', 'sang', 'linh'];
       members.splice(1, 0, "quoc");
-      console.log(members);
       // output: ['quoc', 'truong', 'quoc', 'sang', 'linh'];
       members.splice(0, 0, "quoc");
-      console.log(members);
       // output: ['quoc', 'truong', 'quoc', 'khoa', 'sang', 'linh'];
       members.splice(3, 0, "khoa");
-      console.log(members);
 
       // replace item
       // output: ['quoc', 'truong', 'niem', 'khoa', 'sang', 'linh'];
       members.splice(2, 1, "niem");
-      console.log(members);
 
       // output: ['quoc', 'ngoc', 'khoa', 'sang', 'linh'];
       members.splice(1, 2, "ngoc");
-      console.log(members);
 
       // output: ['quoc', 'kien', 'thy', 'sang', 'linh'];
       members.splice(1, 2, "kien", "thy");
-      console.log(members);
 
       // remove item
       // output: ['quoc', 'sang', 'linh'];
       members.splice(1, 2);
-      console.log(members);
 
       // output: ['quoc', 'sang'];
       members.splice(2, 1);
-      console.log(members);
 
       // output: ['quoc'];
       members.splice(1);
-      console.log(members);
 
       /* splice object
         - remove cac book price > 100
@@ -86,9 +77,10 @@
         return book.price > 100;
       });
 
-      books.splice(bookIndex, 1);
-
-      books.splice(2, 0, newBook);
+      if (bookIndex !== -1) {
+        books.splice(bookIndex, 1);
+        books.splice(2, 0, newBook);
+      }
 
       console.log(books);
 
