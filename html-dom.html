@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+
+    <!-- Actual DOM, virtual DOM -->
+  </head>
+  <body>
+    <h1>HTML DOM Javascript</h1>
+    
+    <div id="todo">
+      <input type="text" id="todoInput" />
+      <button id="todoActionButton">Add todo</button>
+      <ul id="todoList">
+      </ul>
+    </div>
+
+    <script type="text/javascript">
+      const todoList = document.getElementById('todoList');
+      const todoActionButton = document.getElementById('todoActionButton');
+      const todoInput = document.getElementById('todoInput');
+      let titleTodo = ''
+      let todos = [];
+      let isUpdate = false;
+      let todoIndex = -1;
+
+      todoInput.addEventListener('change', (e) => {
+        titleTodo = e.target.value;
+      })
+
+      todoActionButton.addEventListener('click', actionTodo)
+
+      function actionTodo() {
+        if (isUpdate) {
+          isUpdate = false;
+          todoActionButton.innerHTML = 'Add Todo';
+          todos[todoIndex].title = titleTodo;
+          todoInput.value = '';
+          renderHtmlTodo(todos);
+          return;
+        }
+
+        // add todo
+        const newTodo = {
+          id: Date.now(),
+          title: titleTodo
+        }
+        todos.push(newTodo);
+        todoInput.value = '';
+        renderHtmlTodo(todos);
+      }
+
+      function renderTodoLi(item) {
+        const todoLi = document.createElement('li');
+        todoLi.innerHTML = `Title: ${item.title}`;
+
+        const todoButton = document.createElement('button');
+        todoButton.setAttribute('type', 'button');
+        todoButton.innerHTML = 'Delete';
+        todoButton.addEventListener('click', () => deleteTodo(item.id))
+
+        const todoUpdateButton = document.createElement('button');
+        todoUpdateButton.setAttribute('type', 'button');
+        todoUpdateButton.innerHTML = 'Update';
+        todoUpdateButton.addEventListener('click', () => updateTodo(item.id))
+
+        todoLi.append(todoUpdateButton);
+        todoLi.append(todoButton);
+
+        return todoLi;
+      }
+
+      function updateTodo(id) {
+        const todo = todos.find(todo => todo.id === id);
+        if (!todo) return;
+        isUpdate = true;
+        todoActionButton.innerHTML = 'Update Todo';
+
+        todoIndex = todos.findIndex(todo => todo.id === id);
+        
+        todoInput.value = todo.title;
+        console.log('updateTodo: ', todo)
+      }
+
+      function deleteTodo(id) {
+        const newTodos = JSON.parse(JSON.stringify(todos)); // deep clone
+        const todoFiltered = newTodos.filter(todo => todo.id !== id);
+        todos = [...todoFiltered];
+        renderHtmlTodo(todoFiltered);
+      }
+
+      function renderHtmlTodo(_todos) {
+        todoList.innerHTML = ''; // reset empty
+        _todos.forEach(todo => {
+          const todoLi = renderTodoLi(todo);
+          todoList.append(todoLi);
+        })
+      }
+
+      renderHtmlTodo(todos);
+
+      
+
+
+    </script>
+  </body>
+</html>
