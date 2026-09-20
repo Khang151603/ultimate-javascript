@@ -77,6 +77,36 @@
       const resultCalcuaLegacy = calcuaLegacy({});
       console.log('resultCalcuaLegacy: ', resultCalcuaLegacy)
 
+      /* arrow function
+      - not has this
+      - no name
+      */
+      function sumTranditional(x, y) {
+        return x + y
+      }
+      const sum = (x, y) => ({ a: 1, b: 2 });
+      // const sum = (x, y) => { 
+      //   return {
+      //     a: 1, 
+      //     b: 2 
+      //   }
+      // };
+
+      console.log('sumTranditional: ', sumTranditional(1 ,2), sum(4, 5))
+
+      const users = {
+        firstName: 'tony',
+        lastName: 'nguyen',
+        getFullName: () => {
+         console.log('getFullName: ', this)
+        },
+        getLastName() {
+          console.log('getLastName: ', this)
+        }
+      }
+      users.getFullName();
+      users.getLastName();
+
     </script>
   </body>
 </html>

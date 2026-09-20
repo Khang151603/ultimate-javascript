@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Destructuring</title>
+  </head>
+  <body>
+    <h1>Destructuring</h1>
+    <script type="text/javascript">
+      /* destructuring, rest, spread. Use for object and array
+       - destructuring: phân rã từng phần tử
+       - rest: lấy tất cả phần tử còn lại
+       - spread: dàn trải (liệt kê) ra các phần tử cần dùng
+      */
+
+      const firstName = 'abc';
+      const user = {
+        firstName: 'tony',
+        lastName: 'nguyen',
+        name: 'truong',
+        age: 18,
+        country: {
+          city: {
+            name: 'hcm',
+            year: 2000
+          },
+          ward: 15,
+          persons: 200,
+        },
+        total: 10
+      };
+      
+      // const firstNameUser = user.city; // undefiend
+      // const year = user.country.city.year;
+      const { 
+        country: {
+          city: {
+            name: cityName,
+            year
+          }
+        },
+        ...rest
+      } = user;
+      console.log('users: ', {
+        cityName,
+        rest
+      })
+
+      function getInforUser({ firstName = 'John', lastName = 'Doe', age, total = 0, ...rest } = {}) {
+        console.log('getInforUser: ', {
+          firstName,
+          lastName,
+          age,
+          total,
+          rest
+        })
+      }
+
+      // getInforUser({
+      //   firstName: user.firstName,
+      //   lastName: user.lastName,
+      //   age: user.age,
+      //   total: user.total
+      // })
+      // spear
+      getInforUser({ ...user })
+
+      // array desctructuring
+      const animals = ['dog', 'cat', 'bear', 'tiger'];
+      const [dog, ,bear] = animals;
+
+      console.log('animals: ', {
+        dog, bear
+      });
+
+      // function renderInput({ title, id, className, name, value, type } = {}) {
+      //   console.log('input', restProps)
+      //   // Title: <input id={id} className={className} name={name} value={value} type={type} /> // code
+
+      //   // First Name: <input id='firstName' type="text" className="abc" value="" name="firstName" /> // render UI
+      // }
+
+      function renderInput({ title, ...restProps } = {}) {
+        console.log('input', restProps)
+        // Title: <input {...restProps} /> // code
+
+        // First Name: <input id='firstName' type="text" className="abc" value="" name="firstName" /> // render UI
+      }
+      
+      // pageA 
+      renderInput({
+        id: 'firstName',
+        className: 'abc',
+        name: 'firstName',
+        value: '',
+        type: 'text',
+        title: 'First Name'
+      })
+
+      // pageB
+      renderInput({
+        id: 'lastName',
+        className: 'abc',
+        name: 'lastName',
+        value: '',
+        type: 'text',
+        title: 'Last Name'
+      })
+
+    </script>
+  </body>
+</html>
