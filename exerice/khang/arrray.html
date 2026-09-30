@@ -66,7 +66,7 @@
           title: "angular",
         },
       ];
-      
+
       const newBook = {
         id: 4,
         price: 50,
@@ -120,6 +120,289 @@
         return fruit.title.includes("ap");
       });
       console.log(fruitsWithAp);
+
+      /* count item
+        {
+          banana: 2,
+          cherry: 2,
+          orange: 2,
+          apple: 1,
+          fig: 1
+        }
+      */
+      const fruitBasket = [
+        "banana",
+        "cherry",
+        "orange",
+        "apple",
+        "cherry",
+        "orange",
+        "banana",
+        "fig",
+      ];
+      const fruitCount = fruitBasket.reduce((counts, fruit) => {
+        if (counts[fruit] === undefined) {
+          counts[fruit] = 1;
+        } else {
+          counts[fruit] += 1;
+        }
+
+        return counts;
+      }, {});
+
+      console.log(fruitCount);
+
+      /* flatten color complicated
+        [ 'blue', 'green', 'red', 'orange' ]
+      */
+      const colorArray = [
+        { a: "Happy", b: "Robin", c: ["blue", "green"] },
+        { a: "Tired", b: "panther", c: ["blue", "green", "red", "orange"] },
+        { a: "Sad", b: "Fish", c: ["green", "red"] },
+      ];
+
+      const flattenColors = colorArray.reduce((acc, curr) => {
+        for (const color of curr.c) {
+          if (!acc.includes(color)) {
+            acc.push(color);
+          }
+        }
+
+        return acc;
+      }, []);
+
+      console.log(flattenColors);
+
+      /* groupBy
+        {
+          '2': [
+            { id: 2, name: 'English', duration: 2 },
+          ],
+          '3': [
+            { id: 1, name: 'English', duration: 3 },
+          ],
+          '4': [
+            { id: 3, name: 'French', duration: 4 },
+            { id: 5, name: 'French', duration: 4 },
+          ]
+        }
+      */
+      const languages = [
+        {
+          id: 1,
+          name: "English",
+          duration: 3,
+        },
+        {
+          id: 2,
+          name: "English",
+          duration: 2,
+        },
+        {
+          id: 3,
+          name: "French",
+          duration: 4,
+        },
+        {
+          id: 5,
+          name: "French",
+          duration: 4,
+        },
+      ];
+
+      const languagesByDuration = languages.reduce((acc, currLanguage) => {
+        if (acc[currLanguage.duration]) {
+          acc[currLanguage.duration].push(currLanguage);
+        } else {
+          acc[currLanguage.duration] = [currLanguage];
+        }
+
+        return acc;
+      }, {});
+
+      console.log(languagesByDuration);
+
+      /* output
+        {
+          Billing: [
+            {
+              "email":      "email@example.com",
+              "first_name": "Tony",
+              "last_name":  "Nguyen",
+              "group":   "Billing", 
+            },
+            ...
+          ],
+          Collaboration: [
+            { ... }
+          ],
+          Simulation: [
+            { ... }
+          ],
+        }
+      */
+      const dataNotification = [
+        {
+          email: "email@example.com",
+          first_name: "Tony",
+          last_name: "Nguyen",
+          group: "Billing",
+        },
+        {
+          email: "email@example.com",
+          first_name: "John",
+          last_name: "Doe",
+          group: "Collaboration",
+        },
+        {
+          email: "email@example.com",
+          first_name: "Thang",
+          last_name: "Doe",
+          group: "Simulation",
+        },
+        {
+          email: "email@example.com",
+          first_name: "Stefan",
+          last_name: "Doe",
+          group: "Billing",
+        },
+        {
+          email: "email@example.com",
+          first_name: "John",
+          last_name: "Doe",
+          group: "Billing",
+        },
+      ];
+      const dataNotificationsByGroup = dataNotification.reduce((acc, noti) => {
+        if (acc[noti.group]) {
+          acc[noti.group].push(noti);
+        } else {
+          acc[noti.group] = [noti];
+        }
+
+        return acc;
+      }, {});
+
+      console.log(dataNotificationsByGroup);
+
+      /* output remove duplicated
+        [
+          { campaignId: 'google-32231', campaignName: 'ad group 2' },
+          {
+            campaignId: 'google-195b4eee-b0ee-4475-a70e-6bb8dbafd748',
+            campaignName: 'ad group 1'
+          }
+        ]
+      */
+      const sessionCampaigns = [
+        {
+          campaignId: "google-195b4eee-b0ee-4475-a70e-6bb8dbafd748",
+          campaignName: "ad group 1",
+        },
+      ];
+
+      const dataSet = [
+        {
+          campaignId: "google-32231",
+          campaignName: "ad group 2",
+        },
+        {
+          campaignId: "google-195b4eee-b0ee-4475-a70e-6bb8dbafd748",
+          campaignName: "ad group 1",
+        },
+      ];
+
+      const result = [...dataSet, ...sessionCampaigns].reduce((acc, curr) => {
+        const isDuplicate = acc.some((item) => {
+          return item.campaignId === curr.campaignId;
+        });
+        if (isDuplicate === false) {
+          acc.push(curr);
+        }
+        return acc;
+      }, []);
+
+      console.log(result);
+
+      /* grade
+        Tìm thứ hạng trung bình của cả lớp 
+        Tìm thứ hạng trung bình của nam trong lớp 
+        Tìm thứ hạng trung bình của Nữ trong lớp 
+        Tìm thứ hạng cao nhất của Nam trong lớp 
+        Tìm thứ hạng cao nhất của Nữ trong lớp
+        Tìm thứ hạng thấp nhất của Nam trong lớp 
+        Tìm thứ hạng thấp nhất của Nữ trong lớp 
+        Tìm thứ hạng cao nhất của cả lớp 
+        Tìm thứ hạng thấp nhất của cả lớp
+      */
+      const grades = [
+        { name: "John", grade: 8, sex: "M" },
+        { name: "Sarah", grade: 12, sex: "F" },
+        { name: "Bob", grade: 16, sex: "M" },
+        { name: "Johnny", grade: 2, sex: "M" },
+        { name: "Ethan", grade: 4, sex: "M" },
+        { name: "Paula", grade: 18, sex: "F" },
+        { name: "Donald", grade: 5, sex: "M" },
+        { name: "Jennifer", grade: 13, sex: "F" },
+        { name: "Courtney", grade: 15, sex: "F" },
+        { name: "Jane", grade: 9, sex: "F" },
+      ];
+      //filter sex
+      const males = grades.filter((student) => {
+        return student.sex === "M";
+      });
+
+      const females = grades.filter((student) => {
+        return student.sex === "F";
+      });
+
+      //Tìm thứ hạng trung bình của cả lớp
+      const total = grades.reduce((acc, curr) => {
+        return acc + curr.grade / grades.length;
+      }, 0);
+      console.log("Average grade:", total);
+
+      //Tìm thứ hạng trung bình của nam trong lớp
+      const maleAverage = males.reduce((acc, curr) => {
+        return acc + curr.grade / males.length;
+      }, 0);
+      console.log("Trung binh nam:", maleAverage);
+
+      //Tìm thứ hạng trung bình của nữ trong lớp
+      const femaleAverage = females.reduce((acc, curr) => {
+        return acc + curr.grade / females.length;
+      }, 0);
+      console.log("Trung binh nu:", femaleAverage);
+
+      //Tìm thứ hạng cao nhất của Nam trong lớp
+      const maleMax = males.reduce((acc, curr) => {
+        if (acc.grade > curr.grade) {
+          return acc;
+        } else {
+          return curr;
+        }
+      });
+      console.log("Cao nhat nam:", maleMax);
+
+      //Tìm thứ hạng cao nhất của Nữ trong lớp
+      const femaleMax = females.reduce((acc, curr) => {
+        if (acc.grade > curr.grade) {
+          return acc;
+        } else {
+          return curr;
+        }
+      });
+      console.log("Cao nhat nu:", femaleMax);
+
+      //Tìm thứ hạng cao nhất của cả lớp
+      const maxGrade = grades.reduce((acc, curr) => {
+        if (acc.grade > curr.grade) {
+          return acc;
+        } else {
+          return curr;
+        }
+      });
+      console.log("Cao nhat ca lop:", maxGrade);
     </script>
   </body>
 </html>
