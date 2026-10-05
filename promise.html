@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise</title>
+  </head>
+  <body>
+    <h1>Promise</h1>
+    <script type="text/javascript">
+      const users = []
+      // fetch('http://localhost:3000/api/user')
+      //   .then(data => data.json())
+      //   .then(data => {
+      //     users.push(...data.data);
+      //     console.log('users: ', users)
+      //   })
+
+      const p1 = new Promise((resolve, reject) => {
+        resolve('xxx')
+      });
+
+      // use .then() -> get result of an promise
+      p1
+        .then(data => {
+          console.log('p1 resovle: ', data)
+        })
+        .catch(err => {
+          console.log('p1 reject: ', err)
+        })
+      
+        // const userP2 = fetch('http://localhost:3000/api/user').then(data => data.json());
+        // userP2
+        //   .then(data => {
+        //     console.log('userP2', data)
+        //   })
+        
+          function fakeApi(url) {
+            return new Promise((resolve, reject) => {
+              setTimeout(() => {
+                fetch(url)
+                  .then(data => data.json())
+                  .then(data => resolve(data))
+                  .catch(err => reject(err))
+              }, 3000)
+            })
+          }
+        // fakeApi('http://localhost:3000/api/user3123')
+        //   .then(data => {
+        //     console.log('fakeAPi user success: ', data)
+        //   })
+        //   .catch(err => {
+        //     console.log('fakeAPi user failure: ', err)
+        //   })
+        
+        const fetchUser = fakeApi('http://localhost:3000/api/user')
+        const fetchMember = fakeApi('http://localhost:3000/api/member')
+        const fetchTodos = fakeApi('http://localhost:3000/api/todo?page=1&limit=50')
+
+        // fetchUser
+        //   .then(data => {
+        //     console.log('fetchUser success: ', data)
+        //   })
+        //   .catch(err => {
+        //     console.log('fetchUser failure: ', err)
+        //   })
+
+        // fetchMember
+        //   .then(data => {
+        //     console.log('fetchMember success: ', data)
+        //   })
+        //   .catch(err => {
+        //     console.log('fetchMember failure: ', err)
+        //   })
+
+        // fetchTodos
+        //   .then(data => {
+        //     console.log('fetchTodos success: ', data)
+        //   })
+        //   .catch(err => {
+        //     console.log('fetchTodos failure: ', err)
+        //   })
+
+        // Promise.all -> call api parallel. But one of them error, promise return error.
+        // Promise.allSettled -> call api parallel. One of them error, still return success
+        
+        // Promise.allSettled([fetchUser, fetchMember, fetchTodos])
+        //   .then(values => {
+        //     console.log('promise all resovle: ', values)
+        //   })
+        //   .catch(err => {
+        //     console.log('promise all err: ', err)
+        //   })
+        
+        // async / await
+
+        // a.then(data => {
+        //   b.then(data => {
+        //     c.then(data => {
+
+        //     })
+        //   })
+        // })
+
+        async function sum(x, y) {
+          try {
+            return x + y; // handle logic
+          } catch (err) {
+            console.log('error: ', err)
+          }
+        }
+        console.log('sum: ', sum(2, 3))
+        
+      
+    </script>
+  </body>
+</html>

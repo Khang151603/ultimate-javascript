@@ -15,7 +15,6 @@
           - API route: /api/todo
           - Method: GET | POST | PUT | DELETE
           - CRUD or Resful API (create, read, update, delete)
-
           resource: user (CRUD)
             - GET: /api/users -> get list users (get all)
             - GET: /api/users/:id -> get user detail (get one) 
@@ -106,9 +105,47 @@
       const dataObjectProduct = JSON.parse(window.sessionStorage.getItem('product'));
       console.log('dataObjectProduct: ', typeof dataObjectProduct, dataObjectProduct); // true or false
 
+      /*  
+      - GET https://khang.com/api/user -> get all users
+      - GET https://khang.com/api/user/1 -> get user detail
+      - PUT https://khang.com/api/user/1 -> update user
+      - DELETE https://khang.com/api/user/1 -> delete user
+      - POST https://khang.com/api/user/signup -> create user
+      */
 
+      // get all users
+      fetch('http://localhost:3000/api/user')
+        .then(data => data.json())
+        .then(data => {
+          console.log('get all user: ', data)
+        })
 
-      
+      // create a new user
+      // const newUser = {
+      //   "data": {
+      //       "avatar": "https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg",
+      //       "first_name": "khang khang",
+      //       "last_name": "khang khang",
+      //       "email": "khang@gmail.com",
+      //       "role": "user",
+      //       "address": "140 le van sy",
+      //       "city": "HCM",
+      //       "country": "VN",
+      //       "state": "14",
+      //       "password": "123456"
+      //   }
+      // }
+      // fetch('http://localhost:3000/api/user/signup', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(newUser)
+      // })
+      //   .then(data => data.json())
+      //   .then(data => {
+      //     console.log('get all user: ', data)
+      //   })
     </script>
   </body>
 </html>

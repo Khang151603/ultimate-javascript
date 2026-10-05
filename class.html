@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Javascript</title>
+  </head>
+  <body>
+    <h1>Class Javascript</h1>
+    <script type="text/javascript">
+      class Car {
+        constructor({ name, year, brand } = {}) {
+          this.name = name,
+          this.year = year,
+          this.brand = brand
+        }
+
+        getObject() {
+          return this
+        }
+      } 
+
+      class Honda extends Car {
+        constructor({ name, year, brand, model }) {
+          super({ name, year, brand });
+          this.model = model
+        }
+
+        getContext() {
+          return this
+        }
+      }
+
+      class Huyndai extends Car {
+        constructor() {
+          this.logo = ''
+        }
+      }
+
+      const honda = new Honda({
+        name: 'honda',
+        year: 2000,
+        brand: 'Japan',
+        model: 'civic'
+      });
+      const context = honda.getContext();
+
+      console.log('honda: ', context)
+
+      /* Create Stack
+        push (element): add a new item to the top.
+        pop (): removes the top item.
+        peek (): only return the top element.
+        isEmpty (): return true if the stack doesn’t contain any elements, false if the size bigger than 0.
+        clear (): removes all elements.
+        size() : return the number of elements that the stack contains.
+
+        Create Queue
+        enqueue (element): add a new item at the top of the queue.
+        dequeue (): removes the first element from the queue.
+        front (): returns the first element from the queue.
+        isEmpty (): return true if the queue doesn’t contain any elements, false if the size bigger than 0.
+        clear (): removes all elements.
+        size() : return the number of elements that the queue contains.
+      */
+
+      class Structure {
+        constructor(data = []) {
+          this.data = data;
+        }
+        isEmpty() {
+          return this.data.length > 0
+        }
+        clear() {
+          this.data = [];
+        }
+        size() {
+          return this.data.length
+        }
+        show() {
+          return this.data
+        }
+      }
+
+      class Stack extends Structure{
+        constructor(data) {
+          super(data)
+        }
+        push(item) {
+          this.data.push(item)
+        }
+        pop() {
+          this.data.pop();
+        }
+        peek() {
+          return this.data[this.data.length - 1]
+        }
+      }
+
+      const stack = new Stack();
+      stack.push(5);
+      stack.push(9);
+      stack.push(10);
+      stack.pop();
+      stack.pop();
+
+      const sizeStack = stack.size();
+      const resultStack = stack.show();
+      const peekStack = stack.peek();
+      console.log('stack: ', {
+        resultStack,
+        sizeStack,
+        peekStack
+      })
+
+      class Queue extends Structure{
+        constructor(data) {
+          super(data);
+        }
+        enqueue(item) {
+          this.data.unshift(item)
+        }
+        dequeue() {
+          this.data.shift();
+        }
+        front() {
+          return this.data[0]
+        }
+      }
+
+      const queue = new Queue([20, 50]);
+      queue.enqueue(5);
+      queue.enqueue(9);
+      queue.enqueue(10);
+      queue.dequeue();
+
+      const sizeQueue = queue.size();
+      const resultQueue = queue.show();
+      const frontQueue = queue.front();
+      console.log('Queue: ', {
+        sizeQueue,
+        resultQueue,
+        frontQueue
+      })
+    </script>
+  </body>
+</html>
