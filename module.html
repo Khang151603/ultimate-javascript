@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module javascript</title>
+  </head>
+  <body>
+    <h1>Module javascript</h1>
+    <script type="module">
+      /* import / export default
+        - Imports without curly braces look nicer.
+        - Can put any name when you use import. 
+        - Can’t export  default more than one in 1 file.
+
+        - An file has many function helper -> all use no default
+        - An React Component only has one function name -> use default
+
+      */
+      import getName, { sayHi, sayBye } from './js/utils.js'; // import no default
+      import * as carousel from './js/carousel.js';
+      import * as CONSTANT from './js/config.js'
+
+
+      sayHi();
+      carousel.sayHi();
+      sayBye();
+      getName();
+      console.log('CONSTANT: ', CONSTANT.API_URL)
+    </script>
+  </body>
+</html>
